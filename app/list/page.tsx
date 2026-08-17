@@ -1,5 +1,7 @@
 // Server Component：直接 async 取数（对标 Nuxt 的 asyncData / useFetch）
-// Next 15+ 默认 fetch 不缓存 → 该页默认按请求时渲染（SSR）
+// 显式声明为动态渲染（SSR）：每次请求都在服务端实时取数，
+// 同时避免 build 阶段对外部 API 的强依赖（断网也能成功构建/部署）。
+export const dynamic = "force-dynamic";
 async function getPosts() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=8");
   if (!res.ok) throw new Error("取数失败");
