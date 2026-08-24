@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 
 const nav = [
   { href: "/", label: "首页" },
-  { href: "/about", label: "关于" },
-  { href: "/list", label: "列表" },
+  { href: "/list", label: "内容站" },
   { href: "/posts/1", label: "文章详情" },
   { href: "/live", label: "实时" },
-  { href: "/login", label: "登录(分组演示)" },
+  { href: "/about", label: "关于" },
+  { href: "/dashboard", label: "控制台" },
 ];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
