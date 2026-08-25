@@ -26,6 +26,7 @@ const nav = [
   { href: "/live", label: "实时" },
   { href: "/about", label: "关于" },
   { href: "/dashboard", label: "控制台" },
+  { href: "/search", label: "搜索" },
 ];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

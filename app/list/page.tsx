@@ -26,7 +26,8 @@ export const dynamic = "force-dynamic";
  * 1. 打开 DevTools → Network → 选第一个文档请求 → Response，
  *    能看到 HTML 是分块到达的（不是等全部数据取完才返回）
  * 2. 刷新页面：标题立即出现 → 0.8s 后列表流入 → 2.5s 后推荐区流入
- * 3. 对比传统 CSR：白屏等 JS → 数据回来才整体渲染（可以去 /about 体验）
+ * 3. 对比传统 CSR：白屏等 JS → 数据回来才整体渲染（可以去 /about 体验，
+ *    该页已改为纯 CSR："加载中"占位约 2 秒后才出内容）
  */
 
 /**
