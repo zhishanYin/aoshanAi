@@ -30,9 +30,8 @@ export type SessionPayload = {
 /** 文本 → Uint8Array（SubtleCrypto 的输入要求） */
 const encoder = new TextEncoder();
 
-/** ArrayBuffer → base64url（JWT 规范使用 URL 安全的 base64：+ 变 -、/ 变 _、去掉 = 填充） */
-function toBase64Url(buffer: ArrayBuffer): string {
-  const bytes = new Uint8Array(buffer);
+/** Uint8Array → base64url（JWT 规范使用 URL 安全的 base64：+ 变 -、/ 变 _、去掉 = 填充） */
+function toBase64Url(bytes: Uint8Array): string {
   let binary = "";
   // 逐字节拼二进制字符串（避免大数组 spread 导致栈溢出）
   for (const byte of bytes) binary += String.fromCharCode(byte);
@@ -61,7 +60,7 @@ async function hmacSign(data: string): Promise<string> {
   );
   // 2. 计算签名（返回 ArrayBuffer）
   const signature = await crypto.subtle.sign("HMAC", key, encoder.encode(data));
-  return toBase64Url(signature);
+  return toBase64Url(new Uint8Array(signature));
 }
 
 /**
